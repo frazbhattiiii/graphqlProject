@@ -5,6 +5,8 @@ import {
 } from "react-router-dom";
 import Home from "./Pages/Home";
 import {ApolloProvider,ApolloClient,InMemoryCache} from "@apollo/client";
+import Project from "./Pages/Project";
+import ProjectInfo from "./Pages/ProjectInfo";
 
 const cache = new InMemoryCache({
     typePolicies:{
@@ -23,7 +25,7 @@ const cache = new InMemoryCache({
             }
         }
     }
-                                });
+});
 
 const  client = new ApolloClient({
     uri:`${process.env.REACT_APP_SERVER_URL}/graphql`,
@@ -35,6 +37,8 @@ function App() {
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={ <Home/> }/>
+                <Route path="/projects" element={ <Project/> }/>
+                <Route path="/projects/:id" element={ <ProjectInfo/> }/>
             </Routes>
         </BrowserRouter>
         </ApolloProvider>
